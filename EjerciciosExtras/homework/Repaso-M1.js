@@ -78,20 +78,24 @@ var countProps = function(obj) {
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
 
-    let suma = 0;
-    let current = this.head;
+    var suma = 0;
+    //¿Cómo debiamos iniciar?
+    var current = this.head;
 
-    while(current){
-        if(isNaN(Number(current.value))){
-            current.value = 'kiricocho';
-            suma ++
+    //Recorrer LinkedList
+    //Head --> [1]           --> ['2'] --> [false] --> ['Kirikocho]
+    //        current.value
+    while(current) { 
+        //Necesitamos un condicional, para evaluar si podemos cambiar el valor
+        if(isNaN(current.value)){ //devuelve un booleano, verifica si es numero o no, da false cuando es un numero. Ej: ¿1 no es un numero? Si hay un numero isNaN da false
+            current.value = 'Kiricocho';
+            suma++
         }
-        current = current.next;
+        current = current.next; //avanza current
     }
-
-
-    return suma;
+    return suma; // 1 la cantidad de cambios que hubo
 }
+
 
 
 // Implementar la función mergeQueues que a partir de dos queues recibidas por parametro
@@ -143,6 +147,20 @@ var closureMult = function(multiplier) {
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
+
+    if(!this.right && !this.left){
+        return this.value;
+    }
+    if(!this.right && this.left){
+        return this.value + this.left.sum();   
+    }
+    if(this.right && !this.left){
+        return this.value + this.right.sum();
+    }
+    if(this.right && this.left){
+        return this.value + this.left.sum() + this.right.sum();
+    }
+
 
 }
 
