@@ -78,6 +78,19 @@ var countProps = function(obj) {
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
 
+    let suma = 0;
+    let current = this.head;
+
+    while(current){
+        if(isNaN(Number(current.value))){
+            current.value = 'kiricocho';
+            suma ++
+        }
+        current = current.next;
+    }
+
+
+    return suma;
 }
 
 
@@ -92,6 +105,20 @@ LinkedList.prototype.changeNotNumbers = function(){
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
 
+    let queue = new Queue();
+
+    while(queueOne.size() || queueTwo.size()){
+        let firstelement = queueOne.dequeue();
+        let secondelement = queueTwo.dequeue();
+
+        if(firstelement){
+            queue.enqueue(firstelement);
+        }
+        if(secondelement){
+            queue.enqueue(secondelement);
+        }
+    }
+    return queue;
 }
 
 
@@ -107,6 +134,9 @@ var mergeQueues = function(queueOne, queueTwo) {
 var closureMult = function(multiplier) {
     // Tu código aca:
 
+    return function(num){
+        return num * multiplier
+    }
 }
 
 // Implementar el método sum dentro del prototype de BinarySearchTree
