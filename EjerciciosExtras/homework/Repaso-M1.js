@@ -17,6 +17,17 @@ const {
 var countArray = function(array) {
     // Tu código aca:
     
+    let suma = 0 ; 
+
+    for(let i = 0 ; i < array.length; i++){
+        if(Array.isArray(array[i])){
+            suma += countArray(array[i]);
+        }
+        else{
+            suma += array[i];
+        }
+    }
+    return suma;
 }
 
 
@@ -40,6 +51,19 @@ var countArray = function(array) {
 var countProps = function(obj) {
     // Tu código aca:
 
+    let suma = 0;
+
+    for(let elemento in obj){
+        suma = suma + 1;
+        if(typeof obj[elemento] === "object"){
+            if(!Array.isArray(obj[elemento])){
+                suma += countProps(obj[elemento])
+            }
+        }
+    }
+
+
+    return suma;
 }
 
 
