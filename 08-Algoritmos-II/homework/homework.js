@@ -48,14 +48,20 @@ function mergeSort(array) {
   let right = array.slice(mitad);
   let left = array.slice(0,mitad);
 
-  let rightArray = mergeSort(right);
-  let leftArray = mergeSort(left); 
+   right = mergeSort(right);
+   left = mergeSort(left); 
 
   let resultado = [];
 
   while(left.length && right.length){
-    
+    if(left[0] < right[0]){
+      resultado.push(left.shift());
+    }
+    else{resultado.push(right.shift());}
   }
+
+  resultado = resultado.concat(left,right)
+  return resultado ; 
 }
 
 // No modificar nada debajo de esta línea
